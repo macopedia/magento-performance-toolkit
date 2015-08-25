@@ -91,6 +91,9 @@ $import = Mage::getModel('importexport/import');
 $import->setEntity('catalog_product');
 $import->setBehavior('append');
 // it is not obvious, but the validateSource() will actually save import queue data to DB
-$import->validateSource((string)$generator);
+$result = $import->validateSource((string)$generator);
+if ($result === false) {
+    echo PHP_EOL . $import->getFormatedLogTrace();
+}
 // this converts import queue into actual entities
 $import->importSource();
