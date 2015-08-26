@@ -836,7 +836,7 @@ $import = Mage::getModel('importexport/import');
 $import->setEntity('catalog_product');
 $import->setBehavior('append');
 
-$source = new \Magento\ToolkitFramework\ImportExport\Fixture\Complex\Generator($pattern, $configurablesCount);
+$generator = new \Magento\ToolkitFramework\ImportExport\Fixture\Complex\Generator($pattern, $configurablesCount);
 // it is not obvious, but the validateSource() will actually save import queue data to DB
 $result = $import->validateSource((string)$generator);
 if ($result === false) {
